@@ -91,19 +91,27 @@ class Car {
   }
 
   drive(distance){
-    this.odometer = this.odometer + distance;
-    this.tank = this.tank - (distance / this.milesPerGallon);
-    if(this.tank = 0){
-      return `I ran out of fuel at ${this.odometer} miles`;
+    this.tank = this.tank - (distance/this.milesPerGallon);
+    if(this.tank <= 0){
+      this.odometer = distance + (this.tank * this.milesPerGallon);
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
     }
+    this.odometer = this.odometer + distance;
   }
 }
 
+
+// drive(distance){
+//   this.odometer = this.odometer + distance;
+//   this.tank = this.tank - (distance/this.milesPerGallon);
+//   if(this.tank = 0){
+//     return `I ran out of fuel at ${this.odometer} miles`;
+//   }
+// }
+
+
 const carOne = new Car('avalon', 30);
-
-carOne.fill(10);
-
-carOne.drive(290);
 
 /*
   TASK 3
